@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="https://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://maven.apache.org/POM/4.0.0
+                                   https://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+
+   <groupId>br.edu.ifpr</groupId>
+   <artifactId>tempconv</artifactId>
+   <version>0.0.1-SNAPSHOT</version>
+   <packaging>war</packaging>
+
+   <name>${project.artifactId}</name>
+
+   <properties>
+      <maven.test.skip>true</maven.test.skip>
+
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <maven.compiler.source>17</maven.compiler.source>
+      <maven.compiler.target>17</maven.compiler.target>
+
+      <servlet-api.version>6.0.0</servlet-api.version>
+
+      <jersey.version>3.1.2</jersey.version>
+      <jakarta.ws.rs-api.version>3.1.0</jakarta.ws.rs-api.version>
+
+      <jaxb-runtime.version>4.0.5</jaxb-runtime.version>
+
+      <hibernate-validator.version>9.0.1.Final</hibernate-validator.version>
+
+      <jackson.core.version>2.15.2</jackson.core.version>
+      <jackson.databind.version>2.15.2</jackson.databind.version>
+      <jackson.annotations.version>2.15.2</jackson.annotations.version>
+      <jackson.dataformat.xml.version>2.15.2</jackson.dataformat.xml.version>
+      <jackson.datatype.jsr310.version>2.15.2</jackson.datatype.jsr310.version>
+
+      <mongodb-driver-bom.version>5.6.0</mongodb-driver-bom.version>
+
+      <!-- Jakarta Data e JNoSQL -->
+      <jakarta.data-api.version>1.0.0</jakarta.data-api.version>
+      <jakarta.nosql-api.version>1.0.0</jakarta.nosql-api.version>
+      <jnosql.version>1.1.7</jnosql.version>
+
+      <jakarta.annotation-api.version>3.0.0</jakarta.annotation-api.version>
+      <jakarta.enterprise.cdi-api.version>4.0.1</jakarta.enterprise.cdi-api.version>
+
+      <junit-bom.version>5.13.4</junit-bom.version>
+
+      <!-- build > pluginManagement > plugins -->
+      <maven.clean.plugin.version>3.2.0</maven.clean.plugin.version>
+      <maven.resources.plugin.version>3.3.1</maven.resources.plugin.version>
+      <maven.compiler.plugin.version>3.11.0</maven.compiler.plugin.version>
+      <maven.surefire.plugin.version>3.1.2</maven.surefire.plugin.version>
+      <maven.war.plugin.version>3.3.2</maven.war.plugin.version>
+      <maven.install.plugin.version>3.1.1</maven.install.plugin.version>
+      <maven.deploy.plugin.version>3.1.1</maven.deploy.plugin.version>
+   </properties>
+
+   <dependencyManagement>
+      <dependencies>
+         <!-- https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-bom -->
+         <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver-bom</artifactId>
+            <version>${mongodb-driver-bom.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+         </dependency>
+
+         <!-- https://mvnrepository.com/artifact/org.glassfish.jersey/jersey-bom -->
+         <dependency>
+            <groupId>org.glassfish.jersey</groupId>
+            <artifactId>jersey-bom</artifactId>
+            <version>${jersey.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+         </dependency>
+
+         <!-- https://mvnrepository.com/artifact/org.junit/junit-bom -->
+         <dependency>
+            <groupId>org.junit</groupId>
+            <artifactId>junit-bom</artifactId>
+            <version>${junit-bom.version}</version>
+            <type>pom</type>
+            <scope>test</scope>
+         </dependency>
+      </dependencies>
+   </dependencyManagement>
+
+   <dependencies>
+      <!-- https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
+      <dependency>
+          <groupId>jakarta.servlet</groupId>
+          <artifactId>jakarta.servlet-api</artifactId>
+          <version>${servlet-api.version}</version>
+          <scope>provided</scope>
+      </dependency>
+
+      <!-- https://mvnrepository.com/artifact/org.glassfish.jaxb/jaxb-runtime -->
+      <dependency>
+         <groupId>org.glassfish.jaxb</groupId>
+         <artifactId>jaxb-runtime</artifactId>
+         <version>${jaxb-runtime.version}</version>
+      </dependency>
+
+      <!-- https://mvnrepository.com/artifact/org.glassfish.jersey.containers/jersey-container-servlet -->
+      <dependency>
+         <groupId>org.glassfish.jersey.containers</groupId>
+         <artifactId>jersey-container-servlet</artifactId>
+      </dependency>
+
+      <!-- https://mvnrepository.com/artifact/org.glassfish.jersey.inject/jersey-hk2 -->
+      <dependency>
+         <groupId>org.glassfish.jersey.inject</groupId>
+         <artifactId>jersey-hk2</artifactId>
+      </dependency>
+
+      <!-- https://mvnrepository.com/artifact/org.glassfish.jersey.media/jersey-media-json-jackson -->
+      <dependency>
+         <groupId>org.glassfish.jersey.media</groupId>
+         <artifactId>jersey-media-json-jackson</artifactId>
+      </dependency>
+      <!-- https://mvnrepository.com/artifact/org.glassfish.jersey.media/jersey-media-jaxb -->
+      <dependency>
+         <groupId>org.glassfish.jersey.media</groupId>
+         <artifactId>jersey-media-jaxb</artifactId>
+      </dependency>
+
+      <!-- Jakarta RESTful Web Services API -->
+      <dependency>
+          <groupId>jakarta.ws.rs</groupId>
+          <artifactId>jakarta.ws.rs-api</artifactId>
+          <version>${jakarta.ws.rs-api.version}</version>
+          <scope>provided</scope>
+      </dependency>
+
+      <!-- JACKSON CORE -->
+      <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+      <dependency>
+         <groupId>com.fasterxml.jackson.core</groupId>
+         <artifactId>jackson-core</artifactId>
+         <version>${jackson.core.version}</version>
+      </dependency>
+
+      <!-- JACKSON ANNOTATIONS -->
+      <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+      <dependency>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-annotations</artifactId>
+          <version>${jackson.annotations.version}</version>
+      </dependency>
+
+      <!-- JACKSON DATABIND -->
+      <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+      <dependency>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-databind</artifactId>
+          <version>${jackson.databind.version}</version>
+      </dependency>
+
+      <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310 -->
+      <dependency>
+         <groupId>com.fasterxml.jackson.datatype</groupId>
+         <artifactId>jackson-datatype-jsr310</artifactId>
+         <version>${jackson.datatype.jsr310.version}</version>
+      </dependency>
+
+      <!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
+      <dependency>
+         <groupId>org.hibernate.validator</groupId>
+         <artifactId>hibernate-validator</artifactId>
+         <version>${hibernate-validator.version}</version>
+      </dependency>
+
+      <!-- https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-sync -->
+      <dependency>
+         <groupId>org.mongodb</groupId>
+         <artifactId>mongodb-driver-sync</artifactId>
+      </dependency>
+
+      <!-- Jakarta CDI API -->
+      <dependency>
+          <groupId>jakarta.enterprise</groupId>
+          <artifactId>jakarta.enterprise.cdi-api</artifactId>
+          <version>${jakarta.enterprise.cdi-api.version}</version>
+          <scope>provided</scope>
+      </dependency>
+
+      <!-- Jakarta Data API -->
+      <dependency>
+          <groupId>jakarta.data</groupId>
+          <artifactId>jakarta.data-api</artifactId>
+          <version>${jakarta.data-api.version}</version>
+      </dependency>
+
+      <!-- Jakarta NoSQL API -->
+      <dependency>
+          <groupId>jakarta.nosql</groupId>
+          <artifactId>jakarta.nosql-api</artifactId>
+          <version>${jakarta.nosql-api.version}</version>
+      </dependency>
+
+      <!-- Eclipse JNoSQL MongoDB Extension -->
+      <dependency>
+          <groupId>org.eclipse.jnosql.databases</groupId>
+          <artifactId>jnosql-mongodb</artifactId>
+          <version>${jnosql.version}</version>
+      </dependency>
+   </dependencies>
+
+   <build>
+      <finalName>${project.artifactId}</finalName>
+
+      <pluginManagement>
+         <plugins>
+            <!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+            <plugin>
+               <artifactId>maven-clean-plugin</artifactId>
+               <version>${maven.clean.plugin.version}</version>
+            </plugin>
+            <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
+            <plugin>
+               <artifactId>maven-resources-plugin</artifactId>
+               <version>${maven.resources.plugin.version}</version>
+            </plugin>
+            <plugin>
+               <artifactId>maven-compiler-plugin</artifactId>
+               <version>${maven.compiler.plugin.version}</version>
+            </plugin>
+            <plugin>
+               <artifactId>maven-surefire-plugin</artifactId>
+               <version>${maven.surefire.plugin.version}</version>
+            </plugin>
+            <plugin>
+               <artifactId>maven-war-plugin</artifactId>
+               <version>${maven.war.plugin.version}</version>
+            </plugin>
+            <plugin>
+               <artifactId>maven-install-plugin</artifactId>
+               <version>${maven.install.plugin.version}</version>
+            </plugin>
+            <plugin>
+               <artifactId>maven-deploy-plugin</artifactId>
+               <version>${maven.deploy.plugin.version}</version>
+            </plugin>
+         </plugins>
+      </pluginManagement>
+   </build>
+</project>

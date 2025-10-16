@@ -1,0 +1,8 @@
+/home/ubuntu/tempconv/tempconv/src/main/java/br/edu/ifpr/tempconv/model/types/TemperatureTypes.java
+/home/ubuntu/tempconv/tempconv/src/main/java/br/edu/ifpr/tempconv/restful/TemperatureConverterPPResource.java
+/home/ubuntu/tempconv/tempconv/src/main/java/br/edu/ifpr/tempconv/repository/TemperatureRepository.java
+/home/ubuntu/tempconv/tempconv/src/main/java/br/edu/ifpr/tempconv/model/Temperature.java
+/home/ubuntu/tempconv/tempconv/src/main/java/br/edu/ifpr/tempconv/restful/TemperatureResource.java
+/home/ubuntu/tempconv/tempconv/src/main/java/br/edu/ifpr/tempconv/restful/TemperatureConverterQPResource.java
+/home/ubuntu/tempconv/tempconv/src/main/java/br/edu/ifpr/tempconv/restful/config/AppConfig.java
+/home/ubuntu/tempconv/tempconv/src/main/java/br/edu/ifpr/tempconv/utils/TemperatureConverter.java
